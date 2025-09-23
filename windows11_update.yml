@@ -1,0 +1,16 @@
+---
+- name: Patch Windows
+  hosts: windows
+  gather_facts: no
+  vars:
+    categories:
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+  tasks:
+    - name: Install Windows updates
+      ansible.windows.win_updates:
+        category_names: "{{ categories }}"
+        state: installed
+        reboot: yes
+   
