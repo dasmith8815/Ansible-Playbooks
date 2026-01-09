@@ -1,0 +1,22 @@
+---
+- name: Check running Docker containers and stats
+  hosts: Linux
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: List running Docker containers
+      command: docker ps
+      register: docker_ps
+
+    - name: Show running containers
+      debug:
+        msg: "{{ docker_ps.stdout_lines }}"
+
+    - name: Show Docker container stats (one-time snapshot)
+      command: docker stats --no-stream
+      register: docker_stats
+
+    - name: Display Docker stats
+      debug:
+        msg: "{{ docker_stats.stdout_lines }}"
