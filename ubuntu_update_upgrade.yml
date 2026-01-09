@@ -1,0 +1,21 @@
+---
+- name: Update and Upgrade Ubuntu System
+  hosts: Linux
+  become: yes  # This ensures the playbook runs with sudo privileges
+  tasks:
+    - name: Update the package list
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist  # Ensures all packages, including dependencies, are upgraded
+
+    - name: Remove unnecessary packages
+      apt:
+        autoremove: yes
+
+    - name: Clean up package cache
+      apt:
+        autoclean: yes
+
