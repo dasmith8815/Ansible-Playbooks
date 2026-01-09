@@ -9,3 +9,6 @@ This repository contains a collection of Ansible playbooks I use to manage and a
 
 - **windows11_shutdown.yml**  
   Shuts down a Windows 11 VM remotely from the Ansible control node.
+  
+- **ubuntu_update_upgrade.yml**
+  Updates all packages and removes packages that are not needed on Ubuntu host.
