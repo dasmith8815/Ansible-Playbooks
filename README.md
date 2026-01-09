@@ -11,4 +11,10 @@ This repository contains a collection of Ansible playbooks I use to manage and a
   Shuts down a Windows 11 VM remotely from the Ansible control node.
   
 - **ubuntu_update_upgrade.yml**
+
   Updates all packages and removes packages that are not needed on Ubuntu host.
+
+  
+- **docker_health_check.yml**
+
+  Check all running docker containers on host and output stats
