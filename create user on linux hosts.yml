@@ -1,0 +1,26 @@
+---
+- name: Create user on Linux servers
+  hosts: linux
+  become: yes
+
+  tasks:
+    - name: Createuser
+      user:
+        name: add username
+        password: "add password or ssh key"
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Add user to sudo group on Ubuntu
+      user:
+        name: add username
+        groups: sudo
+        append: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Add user to wheel group on RHEL
+      user:
+        name: add username
+        groups: wheel
+        append: yes
+      when: ansible_os_family == "RedHat"
